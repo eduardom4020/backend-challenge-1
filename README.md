@@ -7,13 +7,13 @@ A very common process in a financial institution is called statement reconciliat
 
 As a member of Bino's Software Engineering team, you were assigned the task to implement a statement reconciliation algorithm that will be triggered by a webhook when a new cash-in or cash-out entry is inserted in any of the user's statements, and also by a cron job, fired every minute, as a redundancy measure, once the providers webhooks can't be 100% trusted.
 
-The webhook is just an alert, and won't provide any meaningful information about a transaction.
+**The webhook is just an alert, and won't provide any meaningful information about a transaction.**
 
-Both the webhook and cronjob will just execute the same reconciliation algorithm (trigger the same function that you'll write).
+**Both the webhook and cronjob will just execute the same reconciliation algorithm (trigger the same function that you'll write).**
 
-Every time a transaction entry is inserted in Bino's user statement, the balance should be updated at the same time.
+**Every time a transaction entry is inserted in Bino's user statement, the balance should be updated at the same time.**
 
-Premises:
+### Premises:
 - Webhooks can be fired multiple times for a single transaction (at-least-once delivery)
 - Both cronjobs and webhooks can run concurrently
 - Every provider has the capability of making cashins and cashouts of any type.
