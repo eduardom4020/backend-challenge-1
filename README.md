@@ -17,7 +17,8 @@ As a member of Bino's Software Engineering team, you were assigned the task to i
 - Webhooks can be fired multiple times for a single transaction (at-least-once delivery)
 - Both cronjobs and webhooks can run concurrently
 - Every provider has the capability of making cashins and cashouts of any type.
-For simplicity, let's assume that:
+
+### For simplicity, let's assume that:
 - There is only one user.
 - There are only 2 providers.
 - All cash-out operations will be authorized, don't worry about the user's balance getting negative.
