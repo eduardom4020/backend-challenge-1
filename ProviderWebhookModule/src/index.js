@@ -20,6 +20,6 @@ app.use(router.allowedMethods());
 
 const server = http.createServer(app.callback()).listen(PORT, HOST);
 
-console.log('Server running in ', `http://${HOST}:${PORT}`)
+console.log('Server running in ', `http://${HOST}:${PORT}`);
 
 export default server;
