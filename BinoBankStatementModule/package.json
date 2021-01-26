@@ -1,5 +1,5 @@
 {
-  "name": "bino_bank",
+  "name": "bino_bank_statement_module",
   "version": "1.0.0",
   "description": "Microservices for DiselBank's test",
   "dependencies": {
