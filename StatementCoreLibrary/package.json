@@ -2,8 +2,9 @@
   "name": "bino_bank_statement_core_library",
   "version": "1.0.0",
   "description": "A digital wallet is an app that allows you to perform cash-in and cash-out operations using a lot of different methods. For instance, BinoBank's digital wallet allows you to perform cash-ins by receiving a PIX or by paying a deposit-boleto, and to perform cash-outs by paying bills, paying with your card or transferring money by PIX, TED.\r Sometimes, these methods are provided by different sources. Therefore, the user will have a lot of different statements, but in the app, only a single balance and single statement containing all cash-ins and cash-outs will be available for simplicity!",
+  "main": "dist",
   "scripts": {
-    "start": "node index.js",
+    "build": "babel src -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,6 +12,7 @@
     "url": "git+https://github.com/eduardom4020/backend-challenge-1.git"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/node": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
