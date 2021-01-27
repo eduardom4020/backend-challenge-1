@@ -1,7 +1,18 @@
-console.log('Running Core Library Project!');
+import { CashType } from './enums/cashType';
+import { TransactionType } from './enums/transactionType';
+import { Transaction } from './models/transaction';
+import { User } from './models/user';
+import { Notification } from './models/notification';
+import { Statement } from './models/statement'; 
 
-const VARIAVEL_TESTE = {
-    a: 'a', b: 'b'
-}
+export const models = {
+    Transaction,
+    User,
+    Notification,
+    Statement
+};
 
-export default VARIAVEL_TESTE;
+export const enums = {
+    CashType,
+    TransactionType
+};

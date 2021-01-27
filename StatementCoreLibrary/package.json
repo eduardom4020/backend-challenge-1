@@ -32,5 +32,8 @@
   "bugs": {
     "url": "https://github.com/eduardom4020/backend-challenge-1/issues"
   },
-  "homepage": "https://github.com/eduardom4020/backend-challenge-1#readme"
+  "homepage": "https://github.com/eduardom4020/backend-challenge-1#readme",
+  "dependencies": {
+    "uuid": "^8.3.2"
+  }
 }

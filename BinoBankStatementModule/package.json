@@ -4,6 +4,7 @@
   "description": "Microservices for DiselBank's test",
   "dependencies": {
     "bino_bank_microservices_building_blocks_library": "file:../MicroservicesBuildingBlocksLibrary",
+    "bino_bank_statement_core_library": "file:../StatementCoreLibrary",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
     "koa-logger": "^3.2.1",
