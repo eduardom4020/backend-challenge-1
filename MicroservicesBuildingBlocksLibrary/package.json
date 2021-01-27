@@ -1,0 +1,39 @@
+{
+  "name": "bino_bank_microservices_building_blocks_library",
+  "version": "1.0.0",
+  "description": "A digital wallet is an app that allows you to perform cash-in and cash-out operations using a lot of different methods. For instance, BinoBank's digital wallet allows you to perform cash-ins by receiving a PIX or by paying a deposit-boleto, and to perform cash-outs by paying bills, paying with your card or transferring money by PIX, TED.\r Sometimes, these methods are provided by different sources. Therefore, the user will have a lot of different statements, but in the app, only a single balance and single statement containing all cash-ins and cash-outs will be available for simplicity!",
+  "main": "dist",
+  "scripts": {
+    "build": "babel src -d dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduardom4020/backend-challenge-1.git"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-root-import": "^6.6.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-watch": "^7.3.0",
+    "jest": "^26.6.3",
+    "supertest": "^6.1.3"
+  },
+  "author": "Eduardo Melo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eduardom4020/backend-challenge-1/issues"
+  },
+  "homepage": "https://github.com/eduardom4020/backend-challenge-1#readme",
+  "dependencies": {
+    "mongodb": "^3.6.3"
+  }
+}

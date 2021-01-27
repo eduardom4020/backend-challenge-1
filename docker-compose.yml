@@ -1,0 +1,37 @@
+services:
+  bino-bank-mongo-server:
+    image: mongo:latest
+    container_name: bino-bank-mongo-server
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: u123
+      MONGO_INITDB_ROOT_PASSWORD: 123456
+      MONGO_INITDB_DATABASE: binoBank
+    ports:
+      - 27017:27017
+    volumes:
+      - ./MongoServersSetup/binoBank.init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+  provider-1-mongo-server:
+    image: mongo:latest
+    container_name: provider-1-mongo-server
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: u456
+      MONGO_INITDB_ROOT_PASSWORD: 654321
+      MONGO_INITDB_DATABASE: provider1
+    ports:
+      - 27018:27017
+    volumes:
+      - ./MongoServersSetup/provider1.init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+  provider-2-mongo-server:
+    image: mongo:latest
+    container_name: provider-2-mongo-server
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: uabc
+      MONGO_INITDB_ROOT_PASSWORD: 123abc
+      MONGO_INITDB_DATABASE: provider2
+    ports:
+      - 27019:27017
+    volumes:
+      - ./MongoServersSetup/provider2.init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
