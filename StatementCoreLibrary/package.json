@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/eduardom4020/backend-challenge-1#readme",
   "dependencies": {
+    "moment": "^2.29.1",
     "uuid": "^8.3.2"
   }
 }

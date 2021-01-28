@@ -11,7 +11,16 @@ export class TransactionRepository {
         return Transaction.parse(result);
     }
 
+    findBetweenDates(start, end) {
+        const results = this.baseRepository.findInRange(fields.entryDate, start, end);
+        return results.map(result => Transaction.parse(result));
+    }
+
     add(transaction) {
         this.baseRepository.add(transaction);
+    }
+
+    addRange(transactions) {
+        this.baseRepository.addRange(transactions);
     }
 }
