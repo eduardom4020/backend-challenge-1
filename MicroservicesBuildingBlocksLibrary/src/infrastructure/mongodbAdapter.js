@@ -1,4 +1,5 @@
 import { MongoClient } from 'mongodb';
+import { MongoDBRepository } from '~/src/repositories/mongodbRepository';
 
 const formatCollectionName = collectionName => collectionName.replace(
   /(-\w)/g, function(w) { return w[1].toUpperCase() }
@@ -14,7 +15,7 @@ export const InitializeMongoWithCollections = (appContext, url, databaseName) =>
         .then(collections => {          
           const collectionsObjects = collections.map(collection => {
             const collectionName = formatCollectionName(collection.name);
-            return {[collectionName]: db.collection(collection.name)};
+            return {[collectionName]: new MongoDBRepository(db.collection(collection.name))};
           }).reduce((acc, curr) => ({...acc, ...curr}), {});
 
           return [collectionsObjects, db];
