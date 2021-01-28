@@ -7,13 +7,14 @@ export class TransactionRepository {
     }
 
     findById(id) {
-        const result = this.baseRepository.findByField(fields.id, id);
+        const result = this.baseRepository.findByField(this.fields.id, id);
         return Transaction.parse(result);
     }
 
     findBetweenDates(start, end) {
-        const results = this.baseRepository.findInRange(fields.entryDate, start, end);
-        return results.map(result => Transaction.parse(result));
+        return this.baseRepository.findInRange(this.fields.entryDate, start, end)
+            .then(results => results.map(result => Transaction.parse(result)))
+            .catch(err => console.err(err) || []);
     }
 
     add(transaction) {

@@ -16,6 +16,10 @@ export class StatementService {
         return this.transactionRepository.add(transaction);
     }
 
+    injectRange(transactions) {
+        return this.transactionRepository.addRange(transactions);
+    }
+
     listBetween(start, end) {
         return this.transactionRepository.findBetweenDates(start, end);
     }
@@ -30,6 +34,6 @@ export class StatementService {
         const now = new Date();
         const strNow = now.toISOString();
 
-        this.listTimewindow(strNow, hours);
+        return this.listTimewindow(strNow, hours);
     }
 }

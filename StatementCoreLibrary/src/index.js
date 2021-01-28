@@ -5,6 +5,7 @@ import { User } from './models/user';
 import { Notification } from './models/notification';
 import { Statement } from './models/statement'; 
 import { StatementService } from './services/statementService';
+import { ReconciliationService } from './services/reconciliationService';
 
 export const models = {
     Transaction,
@@ -19,5 +20,6 @@ export const enums = {
 };
 
 export const services = {
-    StatementService
+    StatementService,
+    ReconciliationService
 };

@@ -11,11 +11,12 @@ export class MongoDBRepository {
     findInRange(fieldKey, lowerBondary, upperBoundary) {
         const query = {
             [fieldKey]: {
-                $gte: upperBoundary,
-                $lt: lowerBondary
+                $gt: lowerBondary,
+                $lt: upperBoundary
             }
         };
-        return this.collection.find(query);
+
+        return this.collection.find(query).toArray();
     }
 
     add(entity) {

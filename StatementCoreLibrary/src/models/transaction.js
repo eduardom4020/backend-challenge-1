@@ -39,6 +39,8 @@ export class Transaction {
         transaction.entryDate = json[ENTRY_DATE_KEY];
         transaction.amount = json[AMOUNT_KEY];
         transaction.type = json[TYPE_KEY];
+
+        return transaction;
     }
 
     static fields() {
