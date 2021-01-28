@@ -1,5 +1,6 @@
 import { CashType } from './enums/cashType';
 import { TransactionType } from './enums/transactionType';
+import { find } from './enums';
 import { Transaction } from './models/transaction';
 import { User } from './models/user';
 import { Notification } from './models/notification';
@@ -16,7 +17,8 @@ export const models = {
 
 export const enums = {
     CashType,
-    TransactionType
+    TransactionType,
+    find
 };
 
 export const services = {
