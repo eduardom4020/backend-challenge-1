@@ -4,12 +4,18 @@ export class MongoDBRepository {
     }
 
     findByField(fieldKey, value) {
-        const query = ({[fieldKey]: value});
+        const query = {[fieldKey]: value};
         return this.collection.findOne(query);
     }
 
-    findInRange(fieldKey, start, end) {
-
+    findInRange(fieldKey, lowerBondary, upperBoundary) {
+        const query = {
+            [fieldKey]: {
+                $gte: upperBoundary,
+                $lt: lowerBondary
+            }
+        };
+        return this.collection.find(query);
     }
 
     add(entity) {
@@ -17,6 +23,7 @@ export class MongoDBRepository {
     }
 
     addRange(entities) {
-
+        const jsonEntities = entities.map(entity => entity.toJSON());
+        this.collection.insertMany(jsonEntities);
     }
 }
