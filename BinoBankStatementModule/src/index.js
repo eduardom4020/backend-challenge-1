@@ -3,6 +3,7 @@ import Router from 'koa-router';
 import logger from 'koa-logger';
 import http from 'http';
 import BuildingBlocks from 'bino_bank_microservices_building_blocks_library';
+import { services, enums } from 'bino_bank_statement_core_library';
 
 const PORT = 3000;
 const HOST = 'localhost';
@@ -13,13 +14,15 @@ const app = new Koa();
 const router = new Router();
 
 app.use(async (ctx, next) => {
-    await BuildingBlocks.InitializeMongoWithCollections(ctx, DB_CONNECTION_STRING, DB_NAME)
+    await BuildingBlocks.InitializeMongoWithCollections(ctx, DB_CONNECTION_STRING, DB_NAME);
+    ctx.StatementService = new services.StatementService(ctx.binoBank.bankStatement);
     next();
 });
 
 app.use(logger());
 
 router.get('/', (ctx, next) => {
+    ctx.StatementService.create(enums.CashType.CREDIT, enums.TransactionType.PIX, 100);
     ctx.body = 'api is running...';
 });
    

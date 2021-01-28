@@ -14,4 +14,8 @@ export class Statement {
     toJSON() {
         return this.transactions;
     }
+
+    getFields() {
+        this.toJSON().keys();
+    }
 }

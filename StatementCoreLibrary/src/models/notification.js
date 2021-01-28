@@ -6,4 +6,8 @@ export class Notification {
     toJSON() {
         return { message: this.message };
     }
+
+    getFields() {
+        this.toJSON().keys();
+    }
 }

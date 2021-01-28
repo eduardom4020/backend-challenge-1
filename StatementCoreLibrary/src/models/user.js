@@ -6,4 +6,8 @@ export class User {
     toJSON() {
         return { balance: this.balance };
     }
+
+    getFields() {
+        this.toJSON().keys();
+    }
 }
