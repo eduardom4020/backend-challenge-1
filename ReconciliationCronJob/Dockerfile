@@ -8,4 +8,7 @@ RUN apk update && apk add tzdata &&\
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
+COPY commands /commands
+RUN chmod -R +x /commands
+
 CMD /entrypoint.sh
