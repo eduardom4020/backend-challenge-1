@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-echo "* * * * * node /commands/hello.js" | crontab - && crond -f -L /dev/stdout
+echo "* * * * * node /app/dist/$1.js" | crontab - && crond -f -L /dev/stdout

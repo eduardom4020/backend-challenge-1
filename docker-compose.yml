@@ -36,6 +36,9 @@ services:
     volumes:
       - ./MongoServersSetup/provider2.init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
   reconciliation-cron-job:
-    build: ./ReconciliationCronJob/
+    build: 
+      context: ./
+      dockerfile: ./ReconciliationCronJob/Dockerfile.compose
     container_name: reconciliation-cron-job
     restart: always
+    command: reconciliation
