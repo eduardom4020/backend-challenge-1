@@ -35,3 +35,11 @@ services:
       - 27019:27017
     volumes:
       - ./MongoServersSetup/provider2.init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+  reconciliation-cron-job:
+    build: ./ReconciliationCronJob/
+    container_name: reconciliation-cron-job
+    restart: always
+    volumes:
+      - /var/log/cronteste:/var/log/cronteste
+      - ./ReconciliationCronJob/cron/cron1:/etc/crontabs/root
+      - ./ReconciliationCronJob/sripts:/home/mundodocker
