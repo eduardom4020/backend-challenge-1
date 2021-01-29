@@ -94,6 +94,20 @@ services:
     networks:
       bino-bank-net:
         ipv4_address: 192.168.0.7
+  bino-bank:
+    build: 
+      context: ./
+      dockerfile: ./BinoBankStatementModule/Dockerfile.compose
+    environment:
+      PROVIDER_1_ADDRESS: 192.168.0.1:3001
+      PROVIDER_2_ADDRESS: 192.168.0.1:3002
+    ports:
+      - 3000:3000
+    container_name: bino-bank
+    restart: always
+    networks:
+      bino-bank-net:
+        ipv4_address: 192.168.0.8
 networks:
   bino-bank-net:
     driver: bridge

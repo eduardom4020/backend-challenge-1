@@ -2,7 +2,7 @@
 import { enums } from 'bino_bank_statement_core_library';
 
 export const debitMiddleware = (ctx, _) => {
-    const { transactionType, amount=null } = ctx.query;
+    const { transactionType, amount=null } = ctx.request.body;
     const transactionEnum = enums.find(enums.TransactionType, transactionType);
 
     if(!transactionEnum || amount === null)

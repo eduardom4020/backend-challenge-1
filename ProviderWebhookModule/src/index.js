@@ -13,6 +13,8 @@ const HOST = process.env.HOST;
 const app = new Koa();
 const router = new Router();
 
+app.use(koaBody());
+
 app.use(initializeDatabaseMiddleware);
 
 app.use(logger());

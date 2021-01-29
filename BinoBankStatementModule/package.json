@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Microservices for DiselBank's test",
   "dependencies": {
+    "axios": "^0.21.1",
     "bino_bank_microservices_building_blocks_library": "file:../MicroservicesBuildingBlocksLibrary",
     "bino_bank_statement_core_library": "file:../StatementCoreLibrary",
     "koa": "^2.13.1",

@@ -10,8 +10,11 @@ export const callWebhook = () => {
     if(!someTimesIWillBreak(FAILURE_PROBABILITY)) {
         setTimeout(() => {
             const notification = new models.Notification('New statement arrived!');
-            axios.post(WEBHOOK_ENDPOINT, notification.toJSON())
-                .then(() => console.log('Webhook sent.'));
+            axios.post(WEBHOOK_ENDPOINT, notification.toJSON(), {
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+            }).then(() => console.log('Webhook sent.'));
         }, 200);
     } else {
         console.log('Webhook failed to be sent.')
