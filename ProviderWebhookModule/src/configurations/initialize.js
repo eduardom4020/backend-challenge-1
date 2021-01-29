@@ -6,6 +6,6 @@ export const initializeDatabaseMiddleware = async (ctx, next) => {
         ctx, process.env.DB_CONNECTION_STRING, process.env.DB_NAME
     );
     
-    ctx.StatementService = new services.StatementService(ctx.provider1.bankStatement);
+    ctx.StatementService = new services.StatementService(ctx[process.env.DB_NAME].bankStatement);
     next();
 }

@@ -78,6 +78,7 @@ services:
       WEBHOOK_ADDRESS: 192.168.0.1:3000
       DB_CONNECTION_STRING: mongodb://provider1:654321@192.168.0.1:27018/?authSource=provider1&readPreference=primary&ssl=false
       DB_NAME: provider1
+      API_NAME: Provider 1
     ports:
       - 3001:3000
     container_name: provider1-service
@@ -99,6 +100,7 @@ services:
       WEBHOOK_ADDRESS: 192.168.0.1:3000
       DB_CONNECTION_STRING: mongodb://provider2:123abc@192.168.0.1:27019/?authSource=provider2&readPreference=primary&ssl=false
       DB_NAME: provider2
+      API_NAME: Provider 2
     ports:
       - 3002:3000
     container_name: provider2-service
