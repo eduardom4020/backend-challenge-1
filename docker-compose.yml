@@ -59,7 +59,41 @@ services:
     command: reconciliation
     networks:
       bino-bank-net:
-        ipv4_address: 192.168.0.10
+        ipv4_address: 192.168.0.5
+  provider1-service:
+    build: 
+      context: ./
+      dockerfile: ./ProviderWebhookModule/Dockerfile.compose
+    environment:
+      PORT: 3000
+      HOST: 0.0.0.0
+      WEBHOOK_ADDRESS: 192.168.0.1:3000
+      DB_CONNECTION_STRING: mongodb://provider1:654321@192.168.0.1:27018/?authSource=provider1&readPreference=primary&ssl=false
+      DB_NAME: provider1
+    ports:
+      - 3001:3000
+    container_name: provider1-service
+    restart: always
+    networks:
+      bino-bank-net:
+        ipv4_address: 192.168.0.6
+  provider2-service:
+    build: 
+      context: ./
+      dockerfile: ./ProviderWebhookModule/Dockerfile.compose
+    environment:
+      PORT: 3000
+      HOST: 0.0.0.0
+      WEBHOOK_ADDRESS: 192.168.0.1:3000
+      DB_CONNECTION_STRING: mongodb://provider2:123abc@192.168.0.1:27019/?authSource=provider2&readPreference=primary&ssl=false
+      DB_NAME: provider2
+    ports:
+      - 3002:3000
+    container_name: provider2-service
+    restart: always
+    networks:
+      bino-bank-net:
+        ipv4_address: 192.168.0.7
 networks:
   bino-bank-net:
     driver: bridge

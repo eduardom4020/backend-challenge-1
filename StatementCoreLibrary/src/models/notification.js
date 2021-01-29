@@ -1,13 +1,25 @@
+const MESSAGE_KEY = 'message';
+
 export class Notification {
-    constructor(message) {
-        this.message = message;
+    constructor(message=null) {
+        if(message !== null)
+            this.message = message;
     }
 
     toJSON() {
-        return { message: this.message };
+        return { [MESSAGE_KEY]: this.message };
     }
 
-    getFields() {
-        this.toJSON().keys();
+    static parse(json) {
+        const notification = new Notification();
+        notification.message = json[MESSAGE_KEY];
+
+        return notification;
+    }
+
+    static fields() {
+        return {
+            message: MESSAGE_KEY
+        };
     }
 }

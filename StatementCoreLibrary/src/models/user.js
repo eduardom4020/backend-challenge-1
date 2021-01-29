@@ -1,13 +1,25 @@
+const BALANCE_KEY = 'balance';
+
 export class User {
-    constructor(balance) {
-        this.balance = balance;
+    constructor(balance=null) {
+        if(balance !== null)
+            this.balance = balance;
     }
 
     toJSON() {
-        return { balance: this.balance };
+        return { [BALANCE_KEY]: this.balance };
     }
 
-    getFields() {
-        this.toJSON().keys();
+    static parse(json) {
+        const user = new User();
+        user.balance = json[BALANCE_KEY];
+
+        return user;
+    }
+
+    static fields() {
+        return {
+            balance: BALANCE_KEY
+        };
     }
 }
