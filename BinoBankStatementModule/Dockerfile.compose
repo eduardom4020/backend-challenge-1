@@ -12,6 +12,14 @@ RUN chmod -R +x /app
 COPY ./MicroservicesBuildingBlocksLibrary /MicroservicesBuildingBlocksLibrary
 COPY ./StatementCoreLibrary /StatementCoreLibrary
 
+WORKDIR /MicroservicesBuildingBlocksLibrary
+RUN npm install
+RUN npm run build
+
+WORKDIR /StatementCoreLibrary
+RUN npm install
+RUN npm run build
+
 WORKDIR /app
 
 RUN npm install

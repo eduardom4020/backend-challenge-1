@@ -1,5 +1,71 @@
 # DieselBank - Backend Challenge
 
+### Executando o serviço
+
+1. Tenha docker e docker-compose em sua máquina.
+2. Faça o clone do repositório em sua máquina local.
+3. Execute o comando docker-compose up --build -d no root deste projeto.
+
+OBS: Tenha certeza de não ter nenhuma pasta __node_modules__ ou dist dentro dos projetos.
+
+### Utilizando o serviço
+
+É possível acessar os 3 serviços: Bino Bank e os dois provedores.
+Qualquer um dos 3 possui os endpoints de cashin e cashout, porém como Bino Bank não
+realiza estas operações, internamente o que faz é redirecionar para um dos
+dois provedores de forma aleatória.
+
+##### URLS dos serviços
+
+[Bino Bank](http://localhost:3000)
+
+[Provider 1](http://localhost:3001)
+
+[Provider 2](http://localhost:3002)
+
+## Consulta de extrato
+
+**GET** /statement
+
+*query* ?start="YYYY-MM-DDTHH:mm:ss"&end="YYYY-MM-DDTHH:mm:ss"
+
+##### Endpoints Comuns aos 3 Serviços
+
+**POST** /debit
+
+*body* 
+```json
+{
+  "transactionType": "PIX | BOLETO | BILL | CARD | TED", 
+  "amount": 999999.99
+}
+```
+
+**POST** /credit
+
+*body* 
+```json
+{
+  "transactionType": "PIX | BOLETO | BILL | CARD | TED", 
+  "amount": 999999.99
+}
+```
+
+### Notas
+
+* Seguindo as indicações abaixo segui uma arquitetura de micro serviços de forma bastante simplificada.
+* Os serviços estão separados em diferentes containers montados pelo docker compose. 
+* Os projetos Que possuem sufixo Library são bibliotécas com regras de negócio, modelos e outras funcionalidades que precisam ser compartilhadas entre diversos microserviços.
+* Para fazer a reconciliação, assumi que o Bino Bank teria acesso aos bancos de dados dos fornecedores, porém como utilzo repositories e service layer, seria bem fácil adaptar estes serviços para aceitarem também integração via web service ou com banco de dados relacional.
+
+### O que faltou
+
+* Testes unitários: A princípio queria fazer um TDD, porém não teria tempo suficiente.
+* Saldo: Acabei também não tendo tempo de montar o saldo do usuário.
+* Ajustes Finos: Alguns pedaços do código desandaram em meio à implementação...
+
+---
+
 A digital wallet is an app that allows you to perform cash-in and cash-out operations using a lot of different methods. For instance, BinoBank's digital wallet allows you to perform cash-ins by receiving a PIX or by paying a deposit-boleto, and to perform cash-outs by paying bills, paying with your card or transferring money by PIX, TED.
 Sometimes, these methods are provided by different sources. Therefore, the user will have a lot of different statements, but in the app, only a single balance and single statement containing all cash-ins and cash-outs will be available for simplicity!
 
