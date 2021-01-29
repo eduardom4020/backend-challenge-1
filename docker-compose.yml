@@ -9,8 +9,13 @@ services:
       MONGO_INITDB_DATABASE: binoBank
     ports:
       - 27017:27017
+    expose:
+      - 27017
     volumes:
       - ./MongoServersSetup/binoBank.init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      bino-bank-net:
+        ipv4_address: 192.168.0.2
   provider-1-mongo-server:
     image: mongo:latest
     container_name: provider-1-mongo-server
@@ -21,8 +26,13 @@ services:
       MONGO_INITDB_DATABASE: provider1
     ports:
       - 27018:27017
+    expose:
+      - 27017
     volumes:
       - ./MongoServersSetup/provider1.init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      bino-bank-net:
+        ipv4_address: 192.168.0.3
   provider-2-mongo-server:
     image: mongo:latest
     container_name: provider-2-mongo-server
@@ -33,8 +43,13 @@ services:
       MONGO_INITDB_DATABASE: provider2
     ports:
       - 27019:27017
+    expose:
+      - 27017
     volumes:
       - ./MongoServersSetup/provider2.init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      bino-bank-net:
+        ipv4_address: 192.168.0.4
   reconciliation-cron-job:
     build: 
       context: ./
@@ -42,3 +57,12 @@ services:
     container_name: reconciliation-cron-job
     restart: always
     command: reconciliation
+    networks:
+      bino-bank-net:
+        ipv4_address: 192.168.0.10
+networks:
+  bino-bank-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.0.0/24
