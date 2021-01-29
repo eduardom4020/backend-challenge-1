@@ -2,6 +2,7 @@ import Koa from 'koa';
 import Router from 'koa-router';
 import logger from 'koa-logger';
 import http from 'http';
+import koaBody from 'koa-body';
 import { creditMiddleware } from './middlewares/credit';
 import { debitMiddleware } from './middlewares/debit';
 import { ROUTE_DEBIT, ROUTE_CREDIT } from './routes';

@@ -51,6 +51,10 @@ services:
       bino-bank-net:
         ipv4_address: 192.168.0.4
   reconciliation-cron-job:
+    depends_on:
+      - bino-bank-mongo-server
+      - provider-1-mongo-server
+      - provider-2-mongo-server
     build: 
       context: ./
       dockerfile: ./ReconciliationCronJob/Dockerfile.compose
@@ -61,6 +65,10 @@ services:
       bino-bank-net:
         ipv4_address: 192.168.0.5
   provider1-service:
+    depends_on:
+      - bino-bank-mongo-server
+      - provider-1-mongo-server
+      - provider-2-mongo-server
     build: 
       context: ./
       dockerfile: ./ProviderWebhookModule/Dockerfile.compose
@@ -78,6 +86,10 @@ services:
       bino-bank-net:
         ipv4_address: 192.168.0.6
   provider2-service:
+    depends_on:
+      - bino-bank-mongo-server
+      - provider-1-mongo-server
+      - provider-2-mongo-server
     build: 
       context: ./
       dockerfile: ./ProviderWebhookModule/Dockerfile.compose
@@ -95,6 +107,10 @@ services:
       bino-bank-net:
         ipv4_address: 192.168.0.7
   bino-bank:
+    depends_on:
+      - bino-bank-mongo-server
+      - provider-1-mongo-server
+      - provider-2-mongo-server
     build: 
       context: ./
       dockerfile: ./BinoBankStatementModule/Dockerfile.compose
